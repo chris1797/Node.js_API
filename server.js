@@ -17,10 +17,18 @@ app.listen(3001, () => {
 
 //--------------------------------------------------------------------
 
-
 // express 사용법, 기본으로 해줘야 함
 const express = require('express');
 const app = express();
+
+/** 
+ * 서버 재시동 자동화
+ * 터미널에서 nodemon server.js
+ */
+
+// 앱 세팅
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
 // .listen()을 치면 로컬에서 서버를 열 수 있음
 app.listen(8080, () => {
@@ -31,10 +39,10 @@ app.listen(8080, () => {
  * 서버로 GET요청 처리
  * app.get('경로', function(요청, 응답){});
  */ 
-app.get('/home', function(요청, 응답){
-  응답.send('home 입니다.')
+app.get('/home', function(req, res){
+  res.send('home 입니다.')
 });
 
-app.get('/', function(요청, 응답){
-  응답.sendFile(__dirname + '/index.html')
+app.get('/login', function(req, res){
+  res.sendFile(__dirname + '/index.html')
 });
