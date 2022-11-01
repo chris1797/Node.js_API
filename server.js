@@ -21,9 +21,6 @@ app.listen(3001, () => {
 const express = require('express');
 const app = express();
 
-// 로컬 포트
-const PORT = 8080;
-
 // 라우팅
 const home = require("./routes/home");
 
@@ -33,7 +30,8 @@ app.set("view engine", "ejs");
 
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드.
 
+module.exports = app;
 // .listen()을 치면 로컬에서 서버를 열 수 있음
-app.listen(PORT, () => {
-  console.log('listening on 8080')
-});
+// app.listen(PORT, () => {
+//   console.log('listening on 8080')
+// });
