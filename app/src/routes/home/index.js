@@ -1,6 +1,6 @@
 "use strict";
 
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 /**
@@ -10,9 +10,9 @@ const router = express.Router();
 const ctrl = require("./home.ctrl");
 
 // {} 로직 부분이 Controller로 보면 됨
-router.get('/', ctrl.home);
-
-router.get('/login', ctrl.login);
+router.get("/", ctrl.output.home);
+router.get("/login", ctrl.output.login);
+router.post("/login", ctrl.process.login);
 
 // 외부에서 이 router를 외부파일에서 사용할 수 외부로 내보내기 해주는 것
 module.exports = router;
