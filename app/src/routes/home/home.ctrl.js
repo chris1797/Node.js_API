@@ -9,10 +9,30 @@ const output = {
   },
 };
 
+const users = {
+  id: ["jaehun", "chris", "tom"],
+  pw: ["123", "1234", "12345"],
+};
+
 // , 쉼표 붙여주는 것 주의
 const process = {
   login: (req, res) => {
-    console.log(req.body);
+    const id = req.body.id,
+      pw = req.body.pw;
+
+    if (users.id.includes(id)) {
+      const idx = users.id.indexOf(id);
+      if (users.pw[idx] === pw) {
+        return res.json({
+          success: true,
+        });
+      }
+    }
+
+    return res.json({
+      success: false,
+      msg: "로그인에 실패했습니다.",
+    });
   },
 };
 /**
