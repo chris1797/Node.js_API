@@ -28,6 +28,8 @@ const home = require("./src/routes/home");
 app.set("views", "./src/views");
 app.set("view engine", "ejs");
 
+// 정적 경로를 추가해주는 것
+app.use(express.static(`${__dirname}/src/public`));
 app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드.
 
 module.exports = app;
