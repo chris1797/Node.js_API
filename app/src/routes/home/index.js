@@ -12,7 +12,7 @@ const ctrl = require("./home.ctrl");
 // {} 로직 부분이 Controller로 보면 됨
 router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
-router.post("/login", ctrl.process.login);
+router.post("/login", ctrl.process.login); // Front login.js의 function login()으로 감
 
 // 외부에서 이 router를 외부파일에서 사용할 수 외부로 내보내기 해주는 것
 module.exports = router;

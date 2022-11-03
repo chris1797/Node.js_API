@@ -30,5 +30,14 @@ function login() {
      * Promise Type은 then()메소드로 접근 가능
      */
     .then((res) => res.json())
-    .then(console.log); // 서버에서 응답한 데이터를 다시 받기 위해 then()
+    .then((res) => {
+      if (res.success) {
+        location.href = "/";
+      } else {
+        alert(res.msg);
+      }
+    })
+    .catch((err) => {
+      console.error(new Error("로그인 중 에러 발생"));
+    }); // 서버에서 응답한 데이터를 다시 받기 위해 then()
 }
