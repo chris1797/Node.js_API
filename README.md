@@ -4,4 +4,4 @@
 
 ### SKILL
 
-- Node.js, Express, MySQL..
+Node.js, Express, MySQL..
