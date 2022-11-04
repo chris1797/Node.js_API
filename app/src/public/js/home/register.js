@@ -1,24 +1,23 @@
 "use strict";
 
-// 여기는 register.ejs와 연결되어 있는 Front js
-
 // 이  ""는 HTML의 id
 const id = document.querySelector("#id"),
   name = document.querySelector("#name"),
-  pw = document.querySelector("#pw"),
-  pw_confirm = document.querySelector("#pw_confirm"),
+  password = document.querySelector("#password"),
+  password_confirm = document.querySelector("#password_confirm"),
   registerBtn = document.querySelector("#button");
-
-console.log("hello register");
 
 registerBtn.addEventListener("click", register);
 
 function register() {
+  if (!id.value) return alert("아이디를 입력해주세요.");
+  if (password.value !== password_confirm.value) {
+    return alert("비밀번호가 일치하지 않습니다.");
+  }
   const req = {
     id: id.value,
     name: name.value,
-    pw: pw.value,
-    pw_confirm: pw_confirm.value,
+    password: password.value,
   };
 
   // 어떤 경로로 데이터를 보내줄지 정해줘야 함
@@ -44,6 +43,6 @@ function register() {
       }
     })
     .catch((err) => {
-      console.error(new Error("회원가입 중 에러 발생"));
+      console.error("회원가입 중 에러 발생");
     }); // 서버에서 응답한 데이터를 다시 받기 위해 then()
 }

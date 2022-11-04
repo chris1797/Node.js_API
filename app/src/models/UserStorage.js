@@ -9,7 +9,7 @@ class UserStorage {
   static #users = {
     // # : data 은닉화, ctrl에서 쓸 수 있도록 static 선언
     id: ["jaehun", "chris", "tom"],
-    pw: ["123", "1234", "12345"],
+    password: ["123", "1234", "12345"],
     name: ["이재훈", "이제훈", "이자홍"],
   };
 
@@ -37,7 +37,18 @@ class UserStorage {
        */
       return newUser; // usersKeys.reduce가 돌면서 return받은 값들이 newUser 객체에 쌓임
     }, {});
+
     return userInfo;
+  }
+
+  static save(userInfo) {
+    const users = this.#users;
+
+    users.id.push(userInfo.id);
+    users.name.push(userInfo.name);
+    users.password.push(userInfo.password);
+
+    return { success: true };
   }
 }
 

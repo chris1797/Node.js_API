@@ -1,215 +1,99 @@
-@use postcss-preset-env {
-  stage: 0;
+@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+
+.login-page {
+  width: 360px;
+  padding: 8% 0 0;
+  margin: auto;
 }
-
-/* config.css */
-
-:root {
-  --baseColor: #606468;
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-
-/* helpers/align.css */
-
-.align {
-  display: grid;
-  place-items: center;
-}
-
-.grid {
-  inline-size: 90%;
-  margin-inline: auto;
-  max-inline-size: 20rem;
-}
-
-/* helpers/hidden.css */
-
-.hidden {
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
   border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-/* helpers/icon.css */
-
-:root {
-  --iconFill: var(--baseColor);
-}
-
-.icons {
-  display: none;
-}
-
-.icon {
-  block-size: 1em;
-  display: inline-block;
-  fill: var(--iconFill);
-  inline-size: 1em;
-  vertical-align: middle;
-}
-
-/* layout/base.css */
-
-:root {
-  --htmlFontSize: 100%;
-
-  --bodyBackgroundColor: #2c3338;
-  --bodyColor: var(--baseColor);
-  --bodyFontFamily: "Open Sans";
-  --bodyFontFamilyFallback: sans-serif;
-  --bodyFontSize: 0.875rem;
-  --bodyFontWeight: 400;
-  --bodyLineHeight: 1.5;
-}
-
-* {
-  box-sizing: inherit;
-}
-
-html {
+  margin: 0 0 15px;
+  padding: 15px;
   box-sizing: border-box;
-  font-size: var(--htmlFontSize);
+  font-size: 14px;
 }
-
-body {
-  background-color: var(--bodyBackgroundColor);
-  color: var(--bodyColor);
-  font-family: var(--bodyFontFamily), var(--bodyFontFamilyFallback);
-  font-size: var(--bodyFontSize);
-  font-weight: var(--bodyFontWeight);
-  line-height: var(--bodyLineHeight);
-  margin: 0;
-  min-block-size: 100vh;
-}
-
-/* modules/anchor.css */
-
-:root {
-  --anchorColor: #eee;
-}
-
-a {
-  color: var(--anchorColor);
+.form #button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
   outline: 0;
-  text-decoration: none;
-}
-
-a:focus,
-a:hover {
-  text-decoration: underline;
-}
-
-/* modules/form.css */
-
-:root {
-  --formGap: 0.875rem;
-}
-
-input {
-  background-image: none;
+  background: #4CAF50;
+  width: 85%;
   border: 0;
-  color: inherit;
-  font: inherit;
-  margin: 0;
-  outline: 0;
-  padding: 0;
-  transition: background-color 0.3s;
-}
-
-input[type="submit"] {
+  margin: 0 auto;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
   cursor: pointer;
 }
-
-.form {
-  display: grid;
-  gap: var(--formGap);
+.form #button:hover,.form #button:active,.form #button:focus {
+  background: #43A047;
 }
-
-.form input[type="password"],
-.form input[type="text"],
-.form input[type="submit"] {
-  inline-size: 100%;
+.form .message {
+  margin: 15px 0 0;
+  color: #b3b3b3;
+  font-size: 12px;
 }
-
-.form__field {
-  display: flex;
+.form .message a {
+  color: #4CAF50;
+  text-decoration: none;
 }
-
-.form__input {
-  flex: 1;
+.form .register-form {
+  display: none;
 }
-
-/* modules/login.css */
-
-:root {
-  --loginBorderRadus: 0.25rem;
-  --loginColor: #eee;
-
-  --loginInputBackgroundColor: #3b4148;
-  --loginInputHoverBackgroundColor: #434a52;
-
-  --loginLabelBackgroundColor: #363b41;
-
-  --loginSubmitBackgroundColor: #ea4c88;
-  --loginSubmitColor: #eee;
-  --loginSubmitHoverBackgroundColor: #d44179;
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 300px;
+  margin: 0 auto;
 }
-
-.login {
-  color: var(--loginColor);
+.container:before, .container:after {
+  content: "";
+  display: block;
+  clear: both;
 }
-
-.login label,
-.login input[type="text"],
-.login input[type="password"],
-.login input[type="submit"] {
-  border-radius: var(--loginBorderRadus);
-  padding: 1rem;
-}
-
-.login label {
-  background-color: var(--loginLabelBackgroundColor);
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0;
-  padding-inline: 1.25rem;
-}
-
-.login input[type="password"],
-.login input[type="text"] {
-  background-color: var(--loginInputBackgroundColor);
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-}
-
-.login input[type="password"]:focus,
-.login input[type="password"]:hover,
-.login input[type="text"]:focus,
-.login input[type="text"]:hover {
-  background-color: var(--loginInputHoverBackgroundColor);
-}
-
-.login input[type="submit"] {
-  background-color: var(--loginSubmitBackgroundColor);
-  color: var(--loginSubmitColor);
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.login input[type="submit"]:focus,
-.login input[type="submit"]:hover {
-  background-color: var(--loginSubmitHoverBackgroundColor);
-}
-
-/* modules/text.css */
-
-p {
-  margin-block: 1.5rem;
-}
-
-.text--center {
+.container .info {
+  margin: 50px auto;
   text-align: center;
+}
+.container .info h1 {
+  margin: 0 0 15px;
+  padding: 0;
+  font-size: 36px;
+  font-weight: 300;
+  color: #1a1a1a;
+}
+.container .info span {
+  color: #4d4d4d;
+  font-size: 12px;
+}
+.container .info span a {
+  color: #000000;
+  text-decoration: none;
+}
+.container .info span .fa {
+  color: #EF3B3A;
+}
+body {
+  background: #76b852; /* fallback for old browsers */
+  background: rgb(141,194,111);
+  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;      
 }
