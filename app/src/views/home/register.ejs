@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <link rel="stylesheet" href="/css/home/login.css"
-  <script src="/js/home/login.js" defer></script>
+  <script src="/js/home/register.js" defer></script>
   <title>Document</title>
 </head>
 
@@ -19,35 +19,35 @@
       <form action="https://httpbin.org/post" method="POST" class="form login">
   
         <div class="form__field">
-          <label for="login__userid"><svg class="icon">
+          <label for="id"><svg class="icon">
               <use xlink:href="#icon-user"></use>
             </svg><span class="hidden">User_id</span></label>
-          <input autocomplete="userid" id="login__userid" type="text" name="userid" class="form__input" placeholder="아이디" required>
+          <input autocomplete="id" id="id" type="text" name="id" class="form__input" placeholder="아이디" required>
         </div>
 
         <div class="form__field">
-          <label for="login__username"><svg class="icon">
+          <label for="name"><svg class="icon">
               <use xlink:href="#icon-user"></use>
             </svg><span class="hidden">Username</span></label>
-          <input autocomplete="username" id="login__username" type="text" name="username" class="form__input" placeholder="이름" required>
+          <input autocomplete="name" id="name" type="text" name="name" class="form__input" placeholder="이름" required>
         </div>
   
         <div class="form__field">
-          <label for="login__password"><svg class="icon">
+          <label for="pw"><svg class="icon">
               <use xlink:href="#icon-lock"></use>
             </svg><span class="hidden">Password</span></label>
-          <input id="login__password" type="password" name="password" class="form__input" placeholder="비밀번호" required>
+          <input id="pw" type="password" name="pw" class="form__input" placeholder="비밀번호" required>
         </div>
 
         <div class="form__field">
-          <label for="login__password-confirm"><svg class="icon">
+          <label for="pw_confirm"><svg class="icon">
               <use xlink:href="#icon-lock"></use>
-            </svg><span class="hidden">Password</span></label>
-          <input id="login__password-confirm" type="password" name="password-confirm" class="form__input" placeholder="비밀번호 확인" required>
+            </svg><span class="hidden">Password_Confirm</span></label>
+          <input id="pw_confirm" type="password" name="pw_confirm" class="form__input" placeholder="비밀번호 확인" required>
         </div>
   
         <div class="form__field">
-          <input type="submit" value="Sign Up">
+          <input type="submit" id="button" value="Sign Up">
         </div>
   
       </form>
