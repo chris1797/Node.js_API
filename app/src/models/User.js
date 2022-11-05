@@ -12,19 +12,19 @@ class User {
     this.body = body;
   }
 
-  login() {
+  async login() {
     // id,pw를 지역변수로 쓰기 위한 getUsers
     // getUsers(id)를 통해 return받은 값들이 id, pw에 매칭
     const client = this.body;
-    console.log(UserStorage.getUserInfo(client.id));
+    const { id, password } = await UserStorage.getUserInfo(client.id);
 
-    // if (id) {
-    //   if (id === client.id && password === client.password) {
-    //     return { success: true };
-    //   }
-    //   return { success: false, msg: "비밀번호가 틀렸습니다." };
-    // }
-    // return { success: false, msg: "존재하지 않는 아이디입니다." };
+    if (id) {
+      if (id === client.id && password === client.password) {
+        return { success: true };
+      }
+      return { success: false, msg: "비밀번호가 틀렸습니다." };
+    }
+    return { success: false, msg: "존재하지 않는 아이디입니다." };
   }
 
   register() {
