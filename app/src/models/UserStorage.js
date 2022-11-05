@@ -20,9 +20,9 @@ class UserStorage {
     const users = JSON.parse(data); // pakage.json에서 읽어온 파일을 log로 찍은 것
     const idx = users.id.indexOf(id);
     const usersKeys = Object.keys(users); // -> users의 key들로만 이루어진 list [id, pw, name]
-    const userInfo = usersKeys.reduce((newUser, infofields) => {
+    const userInfo = usersKeys.reduce((newUser, fields) => {
       //   // newUser는 reduce의 return값을 담을 초기화 객체
-      newUser[infofields] = users[infofields][idx];
+      newUser[fields] = users[fields][idx];
       //   /**
       //    * info에는 key list요소들이 들어감
       //    * newUser의 infofields(key)에 users[infofields]에서 id의 index에 해당하는 값을 넣어줌
@@ -32,8 +32,9 @@ class UserStorage {
     return userInfo;
   }
 
-  static getUsers(...fields) {
-    // const users = this.#users;
+  static #getUsers(data, isAll, fields) {
+    const users = JSON.parse(data);
+    if (isAll) return users;
     const newUsers = fields.reduce((newUser, field) => {
       if (users.hasOwnProperty(field)) {
         newUser[field] = users[field];
@@ -41,6 +42,16 @@ class UserStorage {
       return newUser;
     }, {});
     return newUsers;
+  }
+
+  static getUsers(isAll, ...fields) {
+    return fs
+      .readFile("./src/db/users.json")
+      .then((data) => {
+        // 위 코드가 성공했을때 실행
+        return this.#getUsers(data, isAll, fields);
+      })
+      .catch(console.error);
   }
 
   static getUserInfo(id) {
@@ -53,11 +64,20 @@ class UserStorage {
       .catch(console.error); // 실패했을 때 실행
   }
 
-  static save(userInfo) {
-    // const users = this.#users;
+  static async save(userInfo) {
+    const users = await this.getUsers(true);
+
+    if (users.id.includes(userInfo.id)) {
+      /**
+       * Error("~")에서 그냥 문자열을 throw,
+       * 그래야 User.register()에서 response msg가 Object가 아닌 문자열이 됨
+       * */
+      throw "이미 존재하는 아이디입니다.";
+    }
     users.id.push(userInfo.id);
-    users.name.push(userInfo.name);
     users.password.push(userInfo.password);
+    users.name.push(userInfo.name);
+    fs.writeFile("./src/db/users.json", JSON.stringify(users)); // 파일에 데이터 쓰기
 
     return { success: true };
   }
