@@ -16,10 +16,10 @@ class User {
     // id,pw를 지역변수로 쓰기 위한 getUsers
     // getUsers(id)를 통해 return받은 값들이 id, pw에 매칭
     const client = this.body;
-    const { id, password } = await UserStorage.getUserInfo(client.id);
+    const user = await UserStorage.getUserInfo(client.id);
 
-    if (id) {
-      if (id === client.id && password === client.password) {
+    if (user) {
+      if (user.id === client.id && user.password === client.password) {
         return { success: true };
       }
       return { success: false, msg: "비밀번호가 틀렸습니다." };

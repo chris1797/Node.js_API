@@ -46,7 +46,15 @@ class UserStorage {
 
   static getUsers(isAll, ...fields) {}
 
-  static getUserInfo(id) {}
+  static getUserInfo(id) {
+    new Promise((resolve, reject) => {
+      db.query("SELECT * FROM users WHERE id = ?", [id], (err, data) => {
+        if (err) reject(err);
+        console.log(data);
+        resolve(data[0]);
+      });
+    });
+  }
 
   static async save(userInfo) {}
 }
