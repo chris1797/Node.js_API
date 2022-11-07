@@ -2,7 +2,7 @@
 
 // ------------------- UserStorage Model -------------------
 
-const fs = require("fs").promises; // .promises를 붙여주면 promise를 반환
+const db = require("../config/db"); // .promises를 붙여주면 promise를 반환
 
 class UserStorage {
   /**
@@ -44,43 +44,11 @@ class UserStorage {
     return newUsers;
   }
 
-  static getUsers(isAll, ...fields) {
-    return fs
-      .readFile("./src/db/users.json")
-      .then((data) => {
-        // 위 코드가 성공했을때 실행
-        return this.#getUsers(data, isAll, fields);
-      })
-      .catch(console.error);
-  }
+  static getUsers(isAll, ...fields) {}
 
-  static getUserInfo(id) {
-    return fs
-      .readFile("./src/db/users.json")
-      .then((data) => {
-        // 위 코드가 성공했을때 실행
-        return this.#getUserInfo(data, id);
-      })
-      .catch(console.error); // 실패했을 때 실행
-  }
+  static getUserInfo(id) {}
 
-  static async save(userInfo) {
-    const users = await this.getUsers(true);
-
-    if (users.id.includes(userInfo.id)) {
-      /**
-       * Error("~")에서 그냥 문자열을 throw,
-       * 그래야 User.register()에서 response msg가 Object가 아닌 문자열이 됨
-       * */
-      throw "이미 존재하는 아이디입니다.";
-    }
-    users.id.push(userInfo.id);
-    users.password.push(userInfo.password);
-    users.name.push(userInfo.name);
-    fs.writeFile("./src/db/users.json", JSON.stringify(users)); // 파일에 데이터 쓰기
-
-    return { success: true };
-  }
+  static async save(userInfo) {}
 }
 
 module.exports = UserStorage;
