@@ -26,13 +26,9 @@ const process = {
   },
 
   register: async (req, res) => {
-    try {
-      const user = new User(req.body);
-      const response = await user.register();
-      return res.json(response);
-    } catch (err) {
-      console.error(err);
-    }
+    const user = new User(req.body);
+    const response = await user.register();
+    return res.json(response);
   },
 };
 /**
