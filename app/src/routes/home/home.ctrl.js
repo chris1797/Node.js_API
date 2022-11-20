@@ -26,6 +26,12 @@ const process = {
     const response = await user.register();
     return res.json(response);
   },
+
+  save: async (req, res) => {
+    const board = new Board(req.body);
+    const response = await board.save();
+    return res.json(response);
+  },
 };
 /**
  * 밖에서 해당 ctrl 객체들을 콜할 수 있도록 해주는 것
