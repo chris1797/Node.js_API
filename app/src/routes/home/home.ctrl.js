@@ -1,9 +1,14 @@
 "use strict";
 
+const logger = require("../../config/logger");
 const User = require("../../models/User");
 
+/**
+ * output은 get request
+ */
 const output = {
   home: (req, res) => {
+    loggers.info(`GET / 200 "홈 화면으로 이동"`);
     res.render("home/index");
   },
   login: (req, res) => {
