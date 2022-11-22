@@ -19,6 +19,7 @@ const printLogFormat = {
   console: combine(simple()),
 };
 
+
 const opts = {
   file: new transports.File({
     filename: "access.log",
@@ -31,6 +32,7 @@ const opts = {
     format: printLogFormat.console,
   }),
 };
+
 
 const logger = createLogger({
   transports: [opts.file],
