@@ -1,6 +1,9 @@
 "use strict";
 
-const { response } = require("../../server");
+// const { response } = require("../../server");
+
+//import BoardStorage
+const BoardStorage = require("./BoardStorage");
 
 class Board {
 

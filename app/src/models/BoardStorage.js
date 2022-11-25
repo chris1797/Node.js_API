@@ -22,8 +22,8 @@ class BoardStorage {
     return new Promise((resolve, reject) => {
       const query =
         "INSERT INTO board(id, name, title, content) VALUES(?, ?, ?, ?);";
-      db.query(
-        query,
+      db.query( 
+        query, 
         [board.id, board.name, board.title, board.content],
         (err) => {
           if (err) reject(`${err}`);
@@ -33,3 +33,5 @@ class BoardStorage {
     });
   }
 }
+
+module.exports = BoardStorage;
