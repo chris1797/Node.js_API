@@ -2,6 +2,7 @@
 
 const logger = require("../../config/logger");
 const User = require("../../models/User");
+const Board = require("../../models/Board");
 
 /**
  * output은 해당 render page로 이동
@@ -17,6 +18,9 @@ const output = {
   register: (req, res) => {
     res.render("home/register");
   },
+  input: (req, res) => {
+    res.render("home/input");
+  }
 };
 
 

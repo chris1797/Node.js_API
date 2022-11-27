@@ -13,6 +13,7 @@ const ctrl = require("./home.ctrl");
 router.get("/", ctrl.output.home);
 router.get("/login", ctrl.output.login);
 router.get("/register", ctrl.output.register);
+router.get("/input", ctrl.output.input);
 
 router.post("/login", ctrl.process.login); // Front login.js의 function login()으로 감
 router.post("/register", ctrl.process.register);
