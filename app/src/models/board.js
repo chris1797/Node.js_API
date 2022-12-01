@@ -13,6 +13,7 @@ class Board {
 
   async save() {
     const board = this.body;
+    
     try {
       const board = await BoardStorage.save(board);
       return response;
