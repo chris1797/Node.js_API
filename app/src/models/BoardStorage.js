@@ -3,6 +3,8 @@
 const db = require("../config/db");
 
 class BoardStorage {
+
+
   /**
    * 글 상세보기
    * @param {*} id
@@ -18,6 +20,11 @@ class BoardStorage {
     });
   }
 
+  /**
+   * 글 저장
+   * @param {*} board 
+   * @returns 
+   */
   static async save(board) {
     return new Promise((resolve, reject) => {
       const query =

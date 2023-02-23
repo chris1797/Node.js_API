@@ -9,7 +9,9 @@ const id = document.querySelector("#id"),
 
 loginBtn.addEventListener("click", login);
 
+
 function login() {
+  // view에서 넘어온 데이터 객체에 담기
   const req = {
     id: id.value,
     password: password.value,
@@ -27,7 +29,7 @@ function login() {
     /**
      * .then()을 쓰면 Promise데이터가 날아옴
      * 이 Promise 데이터를 받기 위해서는 다시 then()으로 받아야 함
-     * Promise Type은 then()메소드로 접근 가능
+     * Promise 타입은 then()메소드로 접근 가능
      */
     .then((res) => res.json())
     .then((res) => {
